@@ -174,6 +174,8 @@ export{
     updateProductStock,
     incrementProductStock,
 
+    // getReviews or getProductForAdmins  ??
+
     // both
     getProducts,
     getProductById,

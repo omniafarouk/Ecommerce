@@ -7,6 +7,7 @@ const productSchema = new Schema({
     brand : String,
     category : String,
     // gender : female , male , unisex , child ,
+    image_url : String,
     reviews : [{
         // can create a special reviewSchema with no collection in , can also add timestamps for it 
       rating : { type : Number , min : 0 , max : 5 },

@@ -160,7 +160,9 @@ text-decoration: none
 </td></tr><tr><td><div class="t24" style="mso-line-height-rule:exactly;mso-line-height-alt:24px;line-height:24px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="left">
 <table class="t28" role="presentation" cellpadding="0" cellspacing="0" style="Margin-right:auto;max-width:514px;"><tr><td class="t27" style="width:auto;">
 <table class="t26" role="presentation" cellpadding="0" cellspacing="0" style="width:auto;max-width:514px;"><tr><td class="t25" style="overflow:hidden;background-color:#0666EB;text-align:center;line-height:34px;mso-line-height-rule:exactly;mso-text-raise:5px;padding:0 23px 0 23px;border-radius:40px 40px 40px 40px;"><a class="t23" 
- href="http://localhost:3000/user/verify/${token}"
+
+href="http://localhost:3000/user/verify/${token}"
+
  style="display:block;margin:0;Margin:0;font-family:Sofia Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:34px;font-weight:700;font-style:normal;font-size:16px;text-decoration:none;text-transform:none;letter-spacing:-0.2px;direction:ltr;color:#FFFFFF;text-align:center;mso-line-height-rule:exactly;mso-text-raise:5px;" target="_blank">Confirm</a></td></tr></table>
 </td></tr></table>
 </td></tr></table></td></tr></table>

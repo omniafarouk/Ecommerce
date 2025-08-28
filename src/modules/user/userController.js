@@ -34,20 +34,13 @@ const login = async(req,res) => {
     });
     if(!user) res.status(404).json({message : " Wrong credentials , please check email and password again "});
     
-    // this is done for first admin only as i am the one inserting the password manually
-    if(checkedUser.role == "admin"){
-        if(user.password != checkedUser.password){
-            res.status(404).json({message : " Wrong credentials , please check email and password again "});
-        }
+    // take care compareSync has a specific sequence (plain password then hashed password)
+    if(!bcrypt.compareSync(checkedUser.password , user.password)){
+        res.status(404).json({message : " Wrong credentials , please check email and password again "});
     }
-    else{       
-        // take care compareSync has a specific sequence (plain password then hashed password)
-        if(!bcrypt.compareSync(checkedUser.password , user.password)){
-            res.status(404).json({message : " Wrong credentials , please check email and password again "});
-        }
-    }
+    user.password = undefined;
     const token =  jwt.sign({_id:user._id, role:user.role , isConfirmed : user.isConfirmed} , 'NTI-intern');
-    if(user.isConfirmed === true) return res.json({message:`welcome ${user.name} `, token});
+    if(user.isConfirmed === true) return res.json({message:`welcome ${user.name} `,user, token});
     sendMail(user.email);
     return res.json({message:"Please Confirm Your Email",email:user.email});
     
@@ -76,18 +69,17 @@ const updateUserById = async (req,res) => {
 }
 
 const updatePassword = async (req,res) => {
-    const id = req.decoded._id;
-    const { password : newPassword } = req.body;
+    const { email, password : newPassword } = req.body;
 
-    if (!password) {
+    if (!newPassword) {
         return res.status(400).json({ message: "password must be provided" });
     }
 
-    const user = await userModel.findById(id);
+    const user = await userModel.findOne({email:email});
     if (!user) return res.status(404).json({ message: "User not found" });
 
     // Hash new password
-    HashedPassword = bcrypt.hashSync(newPassword,8);
+    const HashedPassword = bcrypt.hashSync(newPassword,8);
     return sendPasswordMail(user.email,HashedPassword);
 
 };
@@ -138,12 +130,10 @@ const VerifyPassword = async (req,res) => {
     if(err) return res.status(401).json({message:"invalid token",err})
 
     let userUpdated = await userModel.findOneAndUpdate({email:decoded.email},{password:decoded.password},{new : true}); 
-    if(userUpdated)
-        return res.status(200).json({ message: "Password updated successfully" });
-    else
-        res.status(500).json({message : "password update failed"});
-    }
-    )
+    if(userUpdated) return res.status(200).json({ message: "Password updated successfully" });
+        
+    return res.status(500).json({message : "password update failed"});
+    })
 }
 
 // note : 401 : means the authentication is uncompleted due to lack of authorization (verification token)

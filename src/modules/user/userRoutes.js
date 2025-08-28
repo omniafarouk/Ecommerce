@@ -27,10 +27,10 @@ userRoutes.put("/user", verifyToken , updateUserById);
 userRoutes.get("/admin/users", verifyToken , checkAuth("admin") , getUsers);
 userRoutes.post("/admin/addadmin", verifyToken , checkAuth("admin") ,addAdmin);
 
+userRoutes.patch("/user/password/reset",updatePassword);
 
 // for authentication 
 userRoutes.get("/user/verify/:email",verifyAccount);
 
 userRoutes.get("/user/password/reset/:token",VerifyPassword);
 
-userRoutes.patch("/user/password/reset",verifyToken,updatePassword);
