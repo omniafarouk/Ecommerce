@@ -48,9 +48,9 @@ Example:
 router.delete("/user/:id", verifyToken, checkAdmin("admin"), deleteUser);
 
 
-# 📧 Email Confirmation & E-Commerce API
+# Email Confirmation & E-Commerce API
 
-## 📧 Email Confirmation Flow
+## Email Confirmation Flow
 - Users receive a **confirmation email** after signup.
 - Backend sets `isConfirmed: false` until the user confirms.
 - If the user does not confirm, the account **remains active** but **cannot place orders**.  
