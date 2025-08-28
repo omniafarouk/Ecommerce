@@ -6,7 +6,7 @@ This project handles **users, authentication, carts, orders, and email confirmat
 ---
 
 ## NOTE:
-### Project has Frontend Implemenetation using Angular.js , take a quick look at the Frontend Repo
+### Project has Frontend Implemenetation using `Angular.js` and `Bootstrap` , take a quick look at the Frontend Repo
 ```
 https://github.com/omniafarouk/E-Commerce-Frontend.git
 ```
