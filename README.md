@@ -1,11 +1,11 @@
-# Ecommerce API (Node.js + Express + MongoDB)
+# E-Commerce API (Node.js + Express + MongoDB)
 
 A backend API for an **Ecommerce system**, built with **Node.js**, **Express**, **MongoDB**, and **JWT authentication**.  
 This project handles **users, authentication, carts, orders, and email confirmation**, with proper security practices.  
 
 ---
 
-## Ecommerce Frontend:
+## E-Commerce Frontend:
 An E-Commerce Frontend Project was implemented For this Backend using `Angular.js` and `Bootstrap` , take a quick look at the Frontend Repo
 ```
 https://github.com/omniafarouk/E-Commerce-Frontend.git
