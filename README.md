@@ -1,13 +1,19 @@
-# 🛒 Ecommerce API (Node.js + Express + MongoDB)
+# Ecommerce API (Node.js + Express + MongoDB)
 
 A backend API for an **Ecommerce system**, built with **Node.js**, **Express**, **MongoDB**, and **JWT authentication**.  
 This project handles **users, authentication, carts, orders, and email confirmation**, with proper security practices.  
 
 ---
 
-## ⚡ Features
+## NOTE:
+### Project has Frontend Implemenetation using Angular.js , take a quick look at the Frontend Repo
+```
+https://github.com/omniafarouk/E-Commerce-Frontend.git
+```
 
-### 🔑 Authentication & User Management
+## Features
+
+### Authentication & User Management
 - Register new users with hashed passwords (bcrypt).  
 - Login with JWT authentication.  
 - Email confirmation (`isConfirmed` boolean in DB).  
@@ -19,21 +25,21 @@ This project handles **users, authentication, carts, orders, and email confirmat
   - A reset your password email is sent
   - Invalidates old sessions after password change.  
 
-### 🛍️ Carts
+### Carts
 - Create a cart for a user.  
 - Get cart by userId.  
 - Delete cart by **userId** (not cartId) → frontend doesn’t need to store cartId.  
   - Example: `DELETE /cart/:userId`  
 - Ensures one cart per user.  
 
-### 📦 Orders
+### Orders
 - Place an order only if:  
   - User is authenticated (`verifyToken`).  
   - User has confirmed email (`isConfirmed: true`).  
 - Orders link to user + cart.  
 - Cancel / update orders supported.  
 
-### 🔒 Middleware
+### Middleware
 - `verifyToken` → validates JWT, attaches decoded user info to `req.decoded`.  
 - `checkAdmin(role)` → role-based access control for admin-only routes.  
 - Chained middleware supported (e.g., `verifyToken` → `checkAdmin`).  
@@ -48,11 +54,11 @@ router.delete("/user/:id", verifyToken, checkAdmin("admin"), deleteUser);
 - Users receive a **confirmation email** after signup.
 - Backend sets `isConfirmed: false` until the user confirms.
 - If the user does not confirm, the account **remains active** but **cannot place orders**.  
-  (❌ Account is **not** auto-deleted)
+  ( Account is **not** auto-deleted)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Backend:** Node.js, Express  
 - **Database:** MongoDB + Mongoose  
 - **Authentication:** JWT + bcrypt  
@@ -61,7 +67,7 @@ router.delete("/user/:id", verifyToken, checkAdmin("admin"), deleteUser);
 
 ---
 
-📂 Project Structure
+Project Structure
 ```
 ecommerce-api/
 ├── models/
@@ -86,33 +92,33 @@ ecommerce-api/
 └── server.js
 ```
 
-🔗 API Endpoints
+ API Endpoints
 
 ---
 
-## 🔗 API Endpoints
+## API Endpoints
 
-### 🔐 Auth
+### Auth
 | Method | Endpoint             | Description              |
 |--------|----------------------|--------------------------|
 | POST   | `/auth/register`     | Register new user        |
 | POST   | `/auth/login`        | Login user + get JWT     |
 | GET    | `/auth/confirm/:id`  | Confirm email            |
 
-### 👤 Users
+### Users
 | Method | Endpoint                 | Description                       |
 |--------|---------------------------|-----------------------------------|
 | PUT    | `/user/updateProfile`    | Update profile (name, email, etc.) |
 | PUT    | `/user/updatePassword`   | Change password (old + new req.)   |
 
-### 🛒 Cart
+### Cart
 | Method | Endpoint        | Description             |
 |--------|-----------------|-------------------------|
 | POST   | `/cart`         | Create new cart         |
 | GET    | `/cart/:userId` | Get cart by `userId`    |
 | DELETE | `/cart/:userId` | Delete cart by `userId` |
 
-### 📦 Orders
+### Orders
 | Method | Endpoint        | Description                          |
 |--------|-----------------|--------------------------------------|
 | POST   | `/order`        | Place order (requires confirmed email) |
@@ -121,14 +127,14 @@ ecommerce-api/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone repo
 ```bash
 git clone https://github.com/your-username/ecommerce-api.git
 cd ecommerce-api
 
-🚀 Getting Started
+Getting Started
 1. Clone repo
 git clone https://github.com/your-username/ecommerce-api.git
 cd ecommerce-api
@@ -150,7 +156,7 @@ node script.js
 or
 nodemon script.js
 ```
-✅ Security Best Practices
+Security Best Practices
 
 Passwords are always hashed with bcrypt.
 
